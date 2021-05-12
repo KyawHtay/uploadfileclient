@@ -1,0 +1,40 @@
+<article class="container container-fluid">
+  <section class="create" *ngIf="isCreate">
+    <h1>Upload User</h1>
+    <form>
+    
+      <app-upload (onUploadFinished)="uploadFinished($event)"></app-upload>
+      <div class="row">
+        <div class="offset-md-5 col-md-2">
+          <button type="button" class="btn btn-primary" (click)="onCreate()">Display </button>
+        </div>
+      </div>
+    </form>
+  </section>
+
+  <section class="users" *ngIf="!isCreate">
+    <div class="row">
+      <div class="offset-md-10 col-md-2">
+        <button type="button" class="btn btn-primary" (click)="returnToCreate()">back</button>
+      </div>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{user.firstName}}</td>
+          <td>{{user.lastName}}</td>
+          <td>{{user.address}}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+  </section>
+</article>
+
